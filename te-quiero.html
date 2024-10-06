@@ -8,11 +8,32 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body class="fondo3">
-<!-- Inserta el audio de fondo -->
-<audio autoplay loop>
+<!-- Botón para iniciar la música -->
+<button onclick="playMusic()" style="display: none;"></button>
+
+<!-- Etiqueta de audio -->
+<audio id="backgroundMusic" loop>
     <source src="musica.mp3" type="audio/mpeg">
-    <!-- Mensaje si el navegador no soporta el elemento de audio -->
     Tu navegador no soporta la reproducción de audio.
 </audio>
+
+<!-- Mensaje de clic -->
+<div id="clickMessage" onclick="startMusic()"></div>
+
+<script>
+    function startMusic() {
+        var audio = document.getElementById("backgroundMusic");
+        audio.play();
+        document.getElementById("clickMessage").style.display = 'none'; // Oculta el mensaje después del clic o tiempo
+    }
+
+    // Se puede iniciar con un clic en cualquier parte de la página
+    document.body.addEventListener('click', startMusic);
+
+    // Simula el clic después de 5 segundos
+    setTimeout(function() {
+        startMusic(); // Llama a la función para iniciar la música automáticamente
+    }, 500); // 5000 ms = 5 segundos (puedes ajustar este valor)
+</script>
 </body>
 </html>
